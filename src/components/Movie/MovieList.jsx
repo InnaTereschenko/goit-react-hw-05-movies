@@ -3,7 +3,7 @@ import MovieItem from "./MovieItem";
 import PropTypes from 'prop-types';
 
 const MovieList = ({ films }) => {
-  // console.log({ films });
+ 
   return (
     <List>
       {films.map(({ id, title, poster_path }) => (

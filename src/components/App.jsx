@@ -12,8 +12,6 @@ export const App = () => {
     <div
       style={{
         height: '100vh',
-        // fontSize: 25,
-        // color: '#ff6918',
         backgroundColor: '#5a18ff',
       }}
     >

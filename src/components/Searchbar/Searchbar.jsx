@@ -1,20 +1,35 @@
 import PropTypes from 'prop-types';
 import { SearchForm, InputSearch, ButtonSearch } from "./Searchbar.styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Searchbar = ({onSubmit, query}) => {
-    const[value, setValue] = useState(query || '');
+    // const[value, setValue] = useState(query || '');
+  
+  const [value, setValue] = useState('');
+  const [searchText, setSearchText] = useState('');
 
+    useEffect(() => {
+    setSearchText(value); // Оновлюємо searchText при зміні value
+    }, [value]);
+  
+    const handleInputChange = evt => {
+    setValue(evt.target.value);
+  };
+  
+  
     const handleFormSubmit = (evt) => {
-        evt.preventDefault();
-        onSubmit(value);
-        console.log(value);
+      evt.preventDefault();
+       if (!searchText.trim()) {
+      alert('Fill in the request');
+      return;
+    }
+      setSearchText(searchText.trim());
+        onSubmit(searchText.trim());
+        // console.log(value);
         setValue('');
     }
     
-      const handleInputChange = evt => {
-    setValue(evt.target.value);
-  };
+    
   
     return (
         <SearchForm onSubmit={handleFormSubmit}>
@@ -31,13 +46,10 @@ const Searchbar = ({onSubmit, query}) => {
 
 Searchbar.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-      value: PropTypes.string,
-  onChange: PropTypes.func,
+  
 };
 
-// Searchbar.propTypes = {
-// 
-// };
+
 
 export default Searchbar;
 

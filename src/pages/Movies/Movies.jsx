@@ -3,8 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { handleSearch } from 'services/themoviedb_api';
 import Searchbar from 'components/Searchbar/Searchbar';
 import MovieList from 'components/Movie/MovieList';
-
-import { InfinitySpin } from 'react-loader-spinner';
+import Loader from 'components/Loader/Loader';
 
 const Movies = () => {
   const [films, setFilms] = useState([]);
@@ -17,15 +16,6 @@ const Movies = () => {
   const updateQueryString = query => {
     const movieValue = query !== '' && { query };
     setSearchParams(movieValue);
-
-    // evt => {
-    //     const movieValue = evt.target.value;
-    //     if (movieValue === '') {
-    //          setSearchParams({});
-    //     }
-    //   setFilms([]);
-    //     setSearchParams({ query: movieValue });
-    //     setMovieTitle(movieValue);
   };
 
   useEffect(() => {
@@ -33,7 +23,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const movies = await handleSearch(movieTitle);
-        console.log('Movies received from handleSearch:', movies);
+        // console.log('Movies received from handleSearch:', movies);
         setFilms(movies);
       } catch (error) {
         console.error(error);
@@ -46,11 +36,10 @@ const Movies = () => {
 
   return (
     <div>
-      <Searchbar value={movieTitle} onChange={updateQueryString} />
+      <Searchbar value={movieTitle} onSubmit={updateQueryString} />
 
-      {/* Відображення індикатора завантаження */}
       {loading ? (
-        <InfinitySpin width="200" color="#4fa94d" />
+        <Loader />
       ) : films.length === 0 && movieTitle ? (
         <h2>🔎 Nothing found</h2>
       ) : (

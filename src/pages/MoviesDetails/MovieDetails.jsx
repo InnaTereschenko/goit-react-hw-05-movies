@@ -48,7 +48,7 @@ const MovieDetails = () => {
 
      
       <Box>
-        <img width="300" src={poster_path} alt={title} />
+        <img width="300" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
         <InfoBox>
           <Tittle>{title ? title : 'No Info'}</Tittle>
           <Text>

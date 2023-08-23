@@ -9,7 +9,7 @@ const MovieItem = ({ id, poster_path, title }) => {
   return (
     <Item key={id}>
       <Link to={`/movies/${id}}`} state={{ from: location }}>
-        <img src={poster_path} alt={title} width="250" />
+        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} width="190px"/>
         <p>{title}</p>
       </Link>
     </Item>

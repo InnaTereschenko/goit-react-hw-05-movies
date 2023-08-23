@@ -13,25 +13,25 @@ const params = {
 
 export const fetchTrendingMovies = async () => {
     const response = await axios.get(`trending/movie/week`, params);
-    console.log(response.data.results);
+    // console.log(response.data.results);
   return response.data.results;
 };
 
 export const fetchMovieDetails = async movieId => {
     const response = await axios.get(`/movie/${movieId}`, params);
-    console.log(response.data);
+    // console.log(response.data);
   return response.data;
 };
 
 export const handleSearch = async movieTitle => {
     const response = await axios.get(`/search/movie?query=${movieTitle}`, params);
-    console.log(response.data.results);
+    // console.log(response.data.results);
   return response.data.results;
 };
 
 export const fetchMovieCast = async movieId => {
     const response = await axios.get(`movie/${movieId}/credits?`, params);
-    console.log(response.data.cast);
+    // console.log(response.data.cast);
   return response.data.cast;
 };
 

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 export const Box = styled.div`
   display: flex;
   color: #fff;
+  padding: 20px;
 `;
 
 export const Tittle = styled.h1`
