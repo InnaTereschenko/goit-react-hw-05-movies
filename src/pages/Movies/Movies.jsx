@@ -8,7 +8,6 @@ import Loader from 'components/Loader/Loader';
 const Movies = () => {
   const [films, setFilms] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [movieTitle, setMovieTitle] = useState(searchParams.get('query') || '');
   const [loading, setLoading] = useState(false);
 
   const movieTitle = searchParams.get('query') || '';
@@ -23,7 +22,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const movies = await handleSearch(movieTitle);
-        // console.log('Movies received from handleSearch:', movies);
+
         setFilms(movies);
       } catch (error) {
         console.error(error);

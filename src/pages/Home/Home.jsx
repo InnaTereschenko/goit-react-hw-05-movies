@@ -27,11 +27,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div><Title>Trending movies for a week</Title>
-      {loading ? (<Loader/>) :
-      (
-           trendingMovies.length > 0 && <MovieList films={trendingMovies}/>
-        )}
+    <div>
+      <Title>Trending movies for a week</Title>
+      {loading ? (
+        <Loader />
+      ) : (
+        trendingMovies.length > 0 && <MovieList films={trendingMovies} />
+      )}
     </div>
   );
 };

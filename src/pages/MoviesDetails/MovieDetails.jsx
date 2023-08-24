@@ -14,13 +14,11 @@ import {
   LinkButton,
 } from './MoviesDetails.styles';
 
-
-
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const location = useLocation;
-  const backLinkHref = useRef(location.state?.from ?? '/movies');
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const movieDetails = async () => {
@@ -46,9 +44,12 @@ const MovieDetails = () => {
         <ButtonBack text=" Go back" />
       </Link>
 
-     
       <Box>
-        <img width="300" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+        <img
+          width="300"
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={title}
+        />
         <InfoBox>
           <Tittle>{title ? title : 'No Info'}</Tittle>
           <Text>
